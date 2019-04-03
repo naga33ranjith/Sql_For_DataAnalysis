@@ -9,3 +9,5 @@ select mod(12345,144) as Cartons_Required ;
 
 select concat(first_name,last_name) as Full_Name from employees 
 where substr(first_name,-1) in('a','e','i','o','u') and substr(last_name,-1) in('a','e','i','o','u');
+
+select * from employees
