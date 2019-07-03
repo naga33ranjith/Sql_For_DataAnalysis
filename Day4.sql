@@ -101,10 +101,16 @@ WHERE CUSTOMER_ID NOT IN 	(SELECT	CUSTOMER_ID
 							ORDER BY CUSTOMER_ID)
 ORDER BY CREATION_DATE LIMIT 1;
     
-    
+
     
 #8.	Write a query which reports month-year wise summary of order details (no. of orders, count of each product ordered, subtotal of product price.
 # Rollup the output at each subgroup level).
+
+
+select month(oh.order_date) as Month1,year(oh.order_date) as year1,count(oh.order_id),sum(oi.ORDERED_QTY),sum(oi.ORDERED_QTY*p.PRODUCT_PRICE) from order_header oh
+inner join order_items oi on oi.order_id=oh.order_id
+inner join product p on p.product_id=oi.product_id
+group by month(oh.order_date),year(oh.order_date) with rollup
 
 
 
